@@ -1,14 +1,4 @@
 
-"""
-class bars(enum.ENUM):
-    SANITY = 50
-    HUNGER = 50
-    EXHAUSTION = 50
-
-    def change(self,value):
-        self.value = value
-"""
-
 class Timer():
 
     def __init__(self):
