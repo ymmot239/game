@@ -7,8 +7,10 @@
 define e = Character("Eileen")
 
 init python:
-    import logic as l
-    times = l.Timer()
+    import timer as t
+    import choices as c
+    times = t.Timer()
+    choice = c.Choices()
 
 
 
