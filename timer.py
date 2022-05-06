@@ -1,4 +1,3 @@
-
 class Timer():
 
     def __init__(self):
@@ -31,8 +30,8 @@ class Timer():
         if minute == 0:
             minute = "00"
         if self.weeks >0:
-            week = "Week " + str(self.weeks+1)
-        return week + " " + day + ", " + str(hour) + ":" + str(minute) + " " + ampm
+            week = "Week " + str(self.weeks+1) + " "
+        return week + day + ", " + str(hour) + ":" + str(minute) + " " + ampm
 
     def incrementTime(self):
         self.timePointer+=1
@@ -75,5 +74,3 @@ class Timer():
                     self.dayPointer = 0
                     self.weeks+=1
             self.timePointer = 4
-        
-        
