@@ -1,9 +1,9 @@
-﻿# The script of the game goes in this file.
+# The script of the game goes in this file.
 
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
-define e = Character("Eileen")
+define e = Character("")
 
 init python:
     import manage as m
@@ -19,31 +19,30 @@ label start:
     # images directory to show it.
 
     scene bg room
+    show screen status(manage.getValues())
 
     # This shows a character sprite. A placeholder is used, but you can
     # replace it by adding a file named "eileen happy.png" to the images
     # directory.
 
-    #show text (times.getTimeString()) at topleft
+    show text (manage.getTime()) at topright
+        
 
     e "you wake up"
-    #  $test = manage.getTime()
-    #  e "[test]"
+    while manage.getValues()[0]>0:
+        show text (manage.getTime()) at topright
+        $test = manage.getChoices()
+        call screen buttons(test)
+        with dissolve
+        $final = manage.makeChoice(_return)
+        show screen status(final)
 
-    show eileen animated
-    call screen five_buttons
-    with dissolve
-    menu:
-
-        "wake up":
-            jump next
-        "oversleep":
-            jump next
+        
 
 label next:
 
     $ renpy.fix_rollback()
 
-    e "what's next?"
+    e "ded"
 
     return
