@@ -1,5 +1,4 @@
-﻿
-# The script of the game goes in this file.
+﻿# The script of the game goes in this file.
 
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
@@ -7,13 +6,9 @@
 define e = Character("Eileen")
 
 init python:
-    import timer as t
-    import choices as c
-    times = t.Timer()
-    choice = c.Choices()
-
-
-
+    import manage as m
+    manage = m.Manager()
+    print(manage.getTime())
 
 # The game starts here.
 
@@ -29,19 +24,21 @@ label start:
     # replace it by adding a file named "eileen happy.png" to the images
     # directory.
 
-    show text (times.getTimeString()) at topleft
+    #show text (times.getTimeString()) at topleft
 
     e "you wake up"
-
+    #  $test = manage.getTime()
+    #  e "[test]"
 
     show eileen animated
-
+    call screen five_buttons
+    with dissolve
     menu:
 
         "wake up":
             jump next
         "oversleep":
-            call morning
+            jump next
 
 label next:
 
