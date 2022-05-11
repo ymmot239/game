@@ -1,6 +1,7 @@
 import timer
 import choices
 import bars
+import lock
 
 class Manager():
 
@@ -8,6 +9,7 @@ class Manager():
         self.timer = timer.Timer()
         self.choice = choices.Choices()
         self.bar = bars.Bars()
+        self.lock = lock.Lock()
         self.absence = 0
 
     def getTime(self):
@@ -18,9 +20,15 @@ class Manager():
 
     def getChoices(self):
         if ("Saturday" in self.timer.getTimeString()) or ("Sunday" in self.timer.getTimeString()):
-            return self.choice.getChoicesWeekend(self.timer.getTime())
+            choice_weekend =  self.choice.getChoicesWeekend(self.timer.getTime())
+            bars  = self.bar.get()
+            return getWeekend(bars,choice_weekend)
         else:
-            return self.choice.getChoices(self.timer.getTime())
+            choice_here = self.choice.getChoices(self.timer.getTime())
+            times = self.timer.getTime()
+            bars = self.bar.get()
+            return self.lock.get(times, bars, choice_here,self.absence)
+            #return self.choice.getChoices(self.timer.getTime())
 
     def makeChoice(self, choice):
         change = self.choice.getResult(choice)
@@ -35,12 +43,15 @@ class Manager():
 
         outs = self.bar.get()
         adjust = [0,0,0]
+        self.bar.change(0,2,2) #additional hunger and exhaustion per turn
+        
         for x in range(3): # cap function
             if outs[x] > 100:
                 adjust[x] = 100-outs[x]
             if outs[x]<0:
                 adjust[x] = -outs[x]
         self.bar.change(adjust[0],adjust[1],adjust[2])
+        
 
         if (choice == "sleep"):
             print("insert dream game here")
@@ -57,7 +68,6 @@ class Manager():
         if choice == "absence makeup":
             self.absence-=1
 
-        self.bar.change(0,2,2) #additional hunger and exhaustion per turn
         outs = self.bar.get()
         outs.append(self.absence)
         return outs
