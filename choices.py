@@ -2,7 +2,7 @@ class Choices():
 
     def __init__(self):
         #list of all possible choices
-        self.choices = ["wake up", "nap", "get ready", "eat", "gather things", "check messages", "study", "phone","socialize","yes","no","absence makeup","sleep","check grades","play video games","shower" ]
+        self.choices = ["wake up", "nap", "get ready", "eat", "gather things", "check messages", "study", "phone","socialize","yes","no","absence makeup","sleep","check grades","play video games","shower","clean" ]
         #choices and results should be the same length
         #note: in 2.7, dictionarys are unordered
         # sanity, hunger, exhaustion
@@ -22,7 +22,8 @@ class Choices():
             "sleep":[0,0,0],             #12
             "check grades":[-1,0,0],     #13
             "play video games":[10,0,10],#14
-            "shower":[10,0,-10]          #15
+            "shower":[10,0,-10],         #15
+            "clean":[10,0,5]             #16
         }
     
     def getChoices(self, time):
@@ -64,7 +65,7 @@ class Choices():
             return ["nap"]
     
     def getChoicesWeekend(self, time):
-        return ["phone"]
+        return [self.choices[3],self.choices[7],self.choices[14],self.choices[6],self.choices[16],self.choices[12]] #eat, phone, game, study, clean, sleep
 
     def getResult(self, inputs):
         return self.results[inputs]
