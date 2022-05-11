@@ -22,7 +22,7 @@ class Manager():
         if ("Saturday" in self.timer.getTimeString()) or ("Sunday" in self.timer.getTimeString()):
             choice_weekend =  self.choice.getChoicesWeekend(self.timer.getTime())
             bars  = self.bar.get()
-            return getWeekend(bars,choice_weekend)
+            return self.lock.getWeekend(bars,choice_weekend)
         else:
             choice_here = self.choice.getChoices(self.timer.getTime())
             times = self.timer.getTime()
