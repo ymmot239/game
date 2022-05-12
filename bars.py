@@ -9,6 +9,9 @@ class Bars():
         self.sanity +=s
         self.hunger+=h
         self.exhaustion+=e
-    
+    def set(self, s,h,e):
+        self.sanity =s
+        self.hunger=h
+        self.exhaustion=e
     def get(self):
         return [self.sanity,self.hunger,self.exhaustion]
