@@ -18,15 +18,17 @@ label start:
     # add a file (named either "bg room.png" or "bg room.jpg") to the
     # images directory to show it.
 
-    scene bg room
+    image yay = (im.Scale("images/bg_room.jpg",1280,720))
+    scene yay
     show screen status(manage.getValues())
-
+    $manage.setValues(50,50,50)
+    $manage.resetTime()
     # This shows a character sprite. A placeholder is used, but you can
     # replace it by adding a file named "eileen happy.png" to the images
     # directory.
 
     show text (manage.getTime()) at topright
-        
+    show screen status(manage.getValues())
 
     e "you wake up"
     while manage.getValues()[0]>0:
@@ -46,3 +48,4 @@ label next:
     e "ded"
 
     return
+    e "yay"
