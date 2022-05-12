@@ -18,6 +18,11 @@ class Manager():
     def getValues(self):
         return self.bar.get()
 
+    def setValues(self,s,h,e):
+        self.bar.set(s,h,e)
+    def resetTime(self):
+        self.timer.reset()
+
     def getChoices(self):
         if ("Saturday" in self.timer.getTimeString()) or ("Sunday" in self.timer.getTimeString()):
             choice_weekend =  self.choice.getChoicesWeekend(self.timer.getTime())
