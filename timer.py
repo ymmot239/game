@@ -13,6 +13,10 @@ class Timer():
             return self.times[self.timePointer]
         else:
             return self.weekend[self.timePointer]
+    def reset(self):
+        self.timePointer=6
+        self.dayPointer=0
+        self.weeks=0
 
     def getTimeString(self):
         week = ""
