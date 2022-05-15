@@ -27,7 +27,7 @@ label start:
     # replace it by adding a file named "eileen happy.png" to the images
     # directory.
     e "test game"
-    call tilestart
+    call sleeps
 
     show text (manage.getTime()) at topright
     show screen status(manage.getValues())
