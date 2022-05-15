@@ -7,6 +7,7 @@ define e = Character("")
 
 init python:
     import manage as m
+    #import flap as f
     manage = m.Manager()
     print(manage.getTime())
 

@@ -20,9 +20,14 @@ screen buttons(sets):
             
 screen status(number):
     vpgrid:
-        cols 1
-        spacing 20
-        for x in range (3):
+        cols 3
+        rows 3
+        xspacing 20
+        xsize 1000
+        $ values = ["S", "H", "E"]
+        for x in range(3):
+            text values[x]
+            text str(number[x])
             bar:
                 value number[x]
                 range 100
@@ -36,5 +41,7 @@ label sleeps:
             call tilestart
         "rhythm":
             call rhythm_game_entry_label
+        "flappy":
+            pass #someone has to code this manually
     scene yay
     return

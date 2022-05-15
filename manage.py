@@ -41,7 +41,7 @@ class Manager():
         outs = self.bar.get()
         if (outs[1] < 30) or (outs[2] < 30): #additonal sanity for hunger and exhaustion
             change[0]+=2
-        if (outs[1] > 70) or (outs[2] > 70):
+        if (outs[1] > 80) or (outs[2] > 80):
             change[0]-=5
 
         self.bar.change(change[0],change[1],change[2]) #make changes based on your choices
@@ -49,14 +49,6 @@ class Manager():
         outs = self.bar.get()
         adjust = [0,0,0]
         self.bar.change(0,2,2) #additional hunger and exhaustion per turn
-        
-        for x in range(3): # cap function
-            if outs[x] > 100:
-                adjust[x] = 100-outs[x]
-            if outs[x]<0:
-                adjust[x] = -outs[x]
-        self.bar.change(adjust[0],adjust[1],adjust[2])
-        
 
         if (choice == "sleep"):
             print("insert dream game here")
@@ -72,6 +64,13 @@ class Manager():
             self.absence+=1
         if choice == "absence makeup":
             self.absence-=1
+        outs = self.bar.get()
+        for x in range(3): # cap function
+            if outs[x] > 100:
+                adjust[x] = 100-outs[x]
+            if outs[x]<0:
+                adjust[x] = -outs[x]
+        self.bar.change(adjust[0],adjust[1],adjust[2])
 
         outs = self.bar.get()
         outs.append(self.absence)
