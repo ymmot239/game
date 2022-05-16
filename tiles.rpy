@@ -5,8 +5,8 @@ init python:
     # default card type set
     all_cards = ['+2', '+1', '+0',"-1","-2"]
     # width and height of the field
-    ww = 5
-    hh = 5
+    ww = 4
+    hh = 4
     # how many cards can be opened for 1 turn
     max_c = 2
     # text size in the card for text mode
@@ -88,6 +88,7 @@ screen memo_scr:
 label memoria_game:
     $ cards_init ()
     $ cards_list = []
+    $ score = 0
     python:
         for i in range (0, len (values_list)):
             if values_list [i] == 'empty':
@@ -103,6 +104,7 @@ label memoria_game:
         $ turned_cards_numbers = []
         $ turned_cards_values = []
         $ turns_left = max_c
+        $ final_count = 0
         label turns_loop:
             if turns_left> 0:
                 $ result = ui.interact ()
@@ -122,10 +124,14 @@ label memoria_game:
             $ renpy.pause (wait, hard = True)
             python:
                 for i in range (0, len (turned_cards_numbers)):
+                    score += int(cards_list [turned_cards_numbers [i]] ["c_value"])/2
+                    print(score)
                     cards_list [turned_cards_numbers [i]] ["c_value"] = 'empty'
                 for j in cards_list:
                     if j ["c_chosen"] == False:
-                        renpy.jump ("memo_game_loop")
+                        final_count+=1
+                if final_count > ww*hh/2:
+                    renpy.jump ("memo_game_loop")
                 renpy.jump ("memo_game_win")
         jump memo_game_loop
 
@@ -138,16 +144,15 @@ label memo_game_lose:
     
 # winnings
 label memo_game_win:
-     hide screen memo_scr
-     $ renpy.pause (0.1, hard = True)
-     centered "{size=36} {b} Winning! {/b} {/size}"
-     return
+    $ renpy.pause (0.2, hard = True)
+    hide screen memo_scr
+
+    centered "{size=36} {b} Winning! {/b} {/size}\n Score = [score]"
+    return
 
 # start-up example
 label tilestart:
      scene black
-     $ max_time = 60
-     $ ww, hh = 4, 4
      call memoria_game
      scene yay
      return
