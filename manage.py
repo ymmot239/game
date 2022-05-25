@@ -14,6 +14,8 @@ class Manager():
 
     def getTime(self):
         return self.timer.getTimeString()
+    def getTimeInt(self):
+        return self.timer.getTime()
 
     def getValues(self):
         return self.bar.get()
