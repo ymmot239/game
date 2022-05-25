@@ -19,6 +19,11 @@ class Lock():
         if time == 1545:
             if absence <=4:
                 locked.append(final.pop(0))
+            if absence >8:
+                print(final)
+                for x in range(len(final)-1):
+                     print(final)
+                     locked.append(final.pop(len(final)-1))
         if (time==1700) or (time == 1800) or (time==1900) or (time == 2000):
             if bars[0]<80:
                 locked.append(final.pop(3))
