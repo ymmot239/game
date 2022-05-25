@@ -22,6 +22,9 @@ class Manager():
         self.bar.set(s,h,e)
     def resetTime(self):
         self.timer.reset()
+        
+    def getPrompts(self):
+        return self.choice.getChoices(self.timer.getTime())[1]
 
     def getChoices(self):
         if ("Saturday" in self.timer.getTimeString()) or ("Sunday" in self.timer.getTimeString()):
@@ -29,7 +32,7 @@ class Manager():
             bars  = self.bar.get()
             return self.lock.getWeekend(bars,choice_weekend)
         else:
-            choice_here = self.choice.getChoices(self.timer.getTime())
+            choice_here = self.choice.getChoices(self.timer.getTime())[0]
             times = self.timer.getTime()
             bars = self.bar.get()
             return self.lock.get(times, bars, choice_here,self.absence)
