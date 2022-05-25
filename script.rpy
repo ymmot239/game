@@ -24,6 +24,7 @@ label start:
     show screen status(manage.getValues())
     $manage.setValues(50,50,50)
     $manage.resetTime()
+    $paranoia = False
     # This shows a character sprite. A placeholder is used, but you can
     # replace it by adding a file named "eileen happy.png" to the images
     # directory.
@@ -41,7 +42,10 @@ label start:
         with dissolve
         $before = manage.getTimeInt()
         $final = manage.makeChoice(_return)
-        
+        if final[0] <35:
+            $paranoia = True
+        else:
+            $paranoia = True
         if _return == "sleep":
             if before == 1330:
                 call sleeps(1)
