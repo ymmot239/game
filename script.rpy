@@ -27,20 +27,28 @@ label start:
     # This shows a character sprite. A placeholder is used, but you can
     # replace it by adding a file named "eileen happy.png" to the images
     # directory.
-    e "test game"
-    call sleeps
 
     show text (manage.getTime()) at topright
     show screen status(manage.getValues())
 
-    e "you wake up"
     while manage.getValues()[0]>0:
         show text (manage.getTime()) at topright
         $test = manage.getChoices()
-        call screen buttons(test)
+        call screen buttons(test,manage.getPrompts())
         with dissolve
+        $before = manage.getTimeInt()
         $final = manage.makeChoice(_return)
-        show screen status(final)
+        
+        if _return == "sleep":
+            if before == 1330:
+                call sleeps(1)
+            else:
+                if before >=1200:
+                    call sleeps((manage.getTimeInt()+2400-before) //100)
+                else:
+                    call sleeps((manage.getTimeInt()-before) //100)
+        show screen status(manage.getValues())
+        
 
         
 
