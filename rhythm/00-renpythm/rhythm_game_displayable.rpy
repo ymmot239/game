@@ -63,7 +63,7 @@ label rhythm_game_entry_label:
     #$ selected_song = renpy.call_screen(_screen_name='select_song_screen', songs=rhythm_game_songs)
     # $ selected_song = _return
 
-    return
+    return new_score
 
 screen select_song_screen(songs):
 
