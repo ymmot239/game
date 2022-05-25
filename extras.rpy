@@ -43,7 +43,7 @@ label sleeps(times):
         menu:
             "tiles":
                 call tilestart
-                $sanity_boost+=_return
+                $sanity_boost+=_return*2
             "rhythm":
                 call rhythm_game_entry_label
                 $sanity_boost+=_return//1000
