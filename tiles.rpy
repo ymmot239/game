@@ -155,4 +155,4 @@ label tilestart:
      scene black
      call memoria_game
      scene yay
-     return
+     return score
