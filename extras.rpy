@@ -1,8 +1,9 @@
 
-screen buttons(sets):
-
-    #window:
-     #   id "window"
+screen buttons(sets,prompt):
+    window:
+        window:
+            style "say_dialogue"
+            text prompt
 
     vbox style "choice_vbox" xalign 0.5 yalign 0.5 spacing 20 :
         for i in sets[0]:
@@ -15,9 +16,8 @@ screen buttons(sets):
             textbutton i action Return(i)
         for i in sets[1]:
             text "{color=#000000}[i]{/color}"
-            
+                
     
-            
 screen status(number):
     vpgrid:
         cols 3
@@ -34,14 +34,23 @@ screen status(number):
                 xsize 360
                 ysize 20
                 
-label sleeps:
-    scene black
-    menu:
-        "tiles":
-            call tilestart
-        "rhythm":
-            call rhythm_game_entry_label
-        "flappy":
-            pass #someone has to code this manually
+label sleeps(times):
+    $number_of_times = 0
+    $sanity_boost = 0
+    while number_of_times <times:
+        scene black
+        show text str(times-number_of_times)+ " Hours left" at topright 
+        menu:
+            "tiles":
+                call tilestart
+                $sanity_boost+=_return
+            "rhythm":
+                call rhythm_game_entry_label
+            "flappy":
+                pass #someone has to code this manually
+        $number_of_times +=1
+    $manage.setValues(manage.getValues()[0]+ sanity_boost, manage.getValues()[1], manage.getValues()[2])
+    $print("final score")
+    $print(sanity_boost)
     scene yay
     return
