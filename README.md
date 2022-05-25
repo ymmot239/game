@@ -1,5 +1,3 @@
 # game
 
-## readme ig umm depression 
-
-### fart 
+## ver alpha 1.5
