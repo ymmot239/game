@@ -46,6 +46,7 @@ label sleeps(times):
                 $sanity_boost+=_return
             "rhythm":
                 call rhythm_game_entry_label
+                $sanity_boost+=_return//1000
             "flappy":
                 pass #someone has to code this manually
         $number_of_times +=1
