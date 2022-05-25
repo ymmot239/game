@@ -30,6 +30,9 @@ label start:
 
     show text (manage.getTime()) at topright
     show screen status(manage.getValues())
+    
+    e "It is Monday, May 1st. The last 3 weeks of school are upon you"    
+    $ renpy.block_rollback()
 
     while manage.getValues()[0]>0:
         show text (manage.getTime()) at topright
@@ -48,8 +51,7 @@ label start:
                 else:
                     call sleeps((manage.getTimeInt()-before) //100)
         show screen status(manage.getValues())
-        
-
+        $ renpy.block_rollback()
         
 
 label next:
@@ -59,4 +61,3 @@ label next:
     e "ded"
 
     return
-    e "yay"
