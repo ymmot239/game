@@ -33,22 +33,39 @@ screen status(number):
                 range 100
                 xsize 360
                 ysize 20
-                
 label sleeps(times):
     $number_of_times = 0
     $sanity_boost = 0
     while number_of_times <times:
         scene black
-        show text str(times-number_of_times)+ " Hours left" at topright 
-        menu:
-            "tiles":
-                call tilestart
-                $sanity_boost+=_return*2
-            "rhythm":
-                call rhythm_game_entry_label
-                $sanity_boost+=_return//1000
-            "flappy":
-                pass #someone has to code this manually
+        show text str(times-number_of_times)+ " Hours left" at topright
+        if paranoia == False:
+            menu:
+                "tiles":
+                    call tilestart
+                    $sanity_boost+=_return*2
+                "flappy":
+                    pass
+                "catch":
+                    pass
+                "rhythm":
+                    call rhythm_game_entry_label
+                    $sanity_boost+=_return//1000
+                "fishing":
+                    pass
+        else:
+            menu:
+                "memory":
+                    pass
+                "tiles":
+                    call tilestart pass ("hard")
+                    $sanity_boost+=_return*2
+                "blackjack":
+                    pass
+                "rhythm":
+                    pass
+                "catch":
+                    pass
         $number_of_times +=1
     $manage.setValues(manage.getValues()[0]+ sanity_boost, manage.getValues()[1], manage.getValues()[2])
     $print("final score")

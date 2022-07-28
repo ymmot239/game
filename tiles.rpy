@@ -151,8 +151,10 @@ label memo_game_win:
     return
 
 # start-up example
-label tilestart:
+label tilestart(ver = "normal"):
      scene black
+     if ver == "hard":
+        $ww = 8
      call memoria_game
      scene yay
      return score

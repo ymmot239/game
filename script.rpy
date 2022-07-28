@@ -7,6 +7,7 @@ define e = Character("")
 
 init python:
     import manage as m
+    import flappy_bird_pygame as f
     #import flap as f
     manage = m.Manager()
     print(manage.getTime())
@@ -45,7 +46,7 @@ label start:
         if final[0] <35:
             $paranoia = True
         else:
-            $paranoia = True
+            $paranoia = False
         if _return == "sleep":
             if before == 1330:
                 call sleeps(1)
