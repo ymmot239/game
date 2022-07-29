@@ -7,7 +7,7 @@ define e = Character("")
 
 init python:
     import manage as m
-    import flappy_bird_pygame as f
+    #import flappy_bird_pygame as f
     #import flap as f
     manage = m.Manager()
     print(manage.getTime())
@@ -16,13 +16,18 @@ init python:
 
 label start:
 
+
+
     # Show a background. This uses a placeholder by default, but you can
     # add a file (named either "bg room.png" or "bg room.jpg") to the
     # images directory to show it.
 
     image yay = (im.Scale("images/bg_room.jpg",1280,720))
     scene yay
+
+    show eileen animated at left
     show screen status(manage.getValues())
+
     $manage.setValues(50,50,50)
     $manage.resetTime()
     $paranoia = False
@@ -32,7 +37,8 @@ label start:
 
     show text (manage.getTime()) at topright
     show screen status(manage.getValues())
-    
+
+
     e "It is Monday, May 1st. The last 3 weeks of school are upon you"    
     $ renpy.block_rollback()
 
