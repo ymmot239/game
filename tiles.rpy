@@ -139,15 +139,15 @@ label memoria_game:
 label memo_game_lose:
     hide screen memo_scr
     $ renpy.pause (0.1, hard = True)
-    centered "{size=36} Vdul! Re-Try. {/size}"
-    jump memoria_game
+    centered "{size=36} OUt of Time!{/size}"
+    return
     
 # winnings
 label memo_game_win:
     $ renpy.pause (0.2, hard = True)
     hide screen memo_scr
 
-    centered "{size=36} {b} Winning! {/b} {/size}\n Score = [score]"
+    centered "{size=36} {b} Finished! {/b} {/size}\n Score = [score]"
     return
 
 # start-up example

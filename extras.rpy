@@ -30,12 +30,13 @@ screen status(number):
             text str(number[x])
             bar:
                 value number[x]
-                range 100
+                range 99
                 xsize 360
                 ysize 20
 label sleeps(times):
     $number_of_times = 0
     $sanity_boost = 0
+    hide screen status
     while number_of_times <times:
         scene black
         show text str(times-number_of_times)+ " Hours left" at topright
@@ -61,7 +62,7 @@ label sleeps(times):
                     call tilestart pass ("hard")
                     $sanity_boost+=_return*2
                 "blackjack":
-                    pass
+                    call blackjack
                 "rhythm":
                     pass
                 "catch":
@@ -71,4 +72,6 @@ label sleeps(times):
     $print("final score")
     $print(sanity_boost)
     scene yay
+    show screen status(manage.getValues())
+    show text (manage.getTime()) at topright
     return

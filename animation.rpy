@@ -74,7 +74,7 @@ image eileen animated:
     pause 0.1
     im.Scale("IMG_2591.jpeg",463,663)
     pause 0.1
-    im.Scale("IMG_2592.png",463,663)
+    im.Scale("IMG_2592.jpeg",463,663)
     pause 0.1
 
     im.Scale("IMG_2591.jpeg",463,663)

@@ -71,8 +71,8 @@ class Manager():
             self.absence-=1
         outs = self.bar.get()
         for x in range(3): # cap function
-            if outs[x] > 100:
-                adjust[x] = 100-outs[x]
+            if outs[x] > 99:
+                adjust[x] = 99-outs[x]
             if outs[x]<0:
                 adjust[x] = -outs[x]
         self.bar.change(adjust[0],adjust[1],adjust[2])
