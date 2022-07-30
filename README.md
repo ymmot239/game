@@ -7,4 +7,4 @@
 ### paranoia effect backgound, games, animation
 ### auto-sleep below 10%
 
-### fishing, blackjack, catch game
+### fishing, catch game, music for rhythm game
